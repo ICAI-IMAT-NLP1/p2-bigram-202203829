@@ -115,9 +115,10 @@ def count_bigrams(
     # Iterate over each bigram and update the count in the tensor
     # TODO
     for bigram in bigrams:
-        i = char_to_idx[bigram[0]]
-        j = char_to_idx[bigram[1]]
-        bigram_counts[i][j] = bigram_counts[i][j]+1
+        if bigram[0] in char_to_idx.keys() and bigram[1] in char_to_idx.keys():
+            i = char_to_idx[bigram[0]]
+            j = char_to_idx[bigram[1]]
+            bigram_counts[i][j] = bigram_counts[i][j]+1
 
 
     return bigram_counts
